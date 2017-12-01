@@ -1,0 +1,1 @@
+# SimpleStart - Object Generator
