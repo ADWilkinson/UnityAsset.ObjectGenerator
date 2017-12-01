@@ -1,0 +1,152 @@
+---------------------------------------------------------------------------------------------------------------------------------
+Introduction					      	
+---------------------------------------------------------------------------------------------------------------------------------
+
+Thank you for downloading SimpleStart - Object Generator.
+
+The purpose of this asset is to give new and existing projects a very lightweight
+and quick to set up script for probability based object generation. In addition to this 
+there is a feature to also place the objects in a uniform grid after generation.
+
+Current Version: 1.0.0
+
+---------------------------------------------------------------------------------------------------------------------------------
+The Files					      	
+---------------------------------------------------------------------------------------------------------------------------------
+
+The essential components to this asset are:
+
+	ObjectGenerator.cs - The script responsible for all the logic the asset handles
+	ObjectGeneratorEditor.cs - The custom editor to allow easy use of the asset within the inspector
+
+The rest of the included assets are included for use in the example scene, which shows the asset in use.
+
+A brief summary of these assets:
+
+	Tile Scripts: A tile interface and 4 different tile scripts that implement this interface.
+	Tile objects: 4 different tile objects with their associated scripts attached 
+	Tile Prefab: A gameobject for generation with each different tile game object nested and deactivated
+	Materials: Different colour materials for each example tile game object:
+	Scene 1: The object generator set up with the tile prefab and ready to be used (read guide below).
+	Scene 2: The result of the object generator (read guide below).
+
+---------------------------------------------------------------------------------------------------------------------------------
+Guide					      	
+---------------------------------------------------------------------------------------------------------------------------------
+
+Prefab Guide:
+
+When the Object Generator script is added to an empty gameobject in the scene you are ready to begin.
+Here is a description of all the fields you can expect in the inspector and what they do and then afterwards 
+an example guide using the example scenes.
+
+Objects In Scene: 
+	This is a public list of all the game objects you generate that you can monitor via the inspector.
+
+Object To Generate: 
+	A gameobject input that the user can drag a prefab for use in the generator (required)
+
+GridParams (required only for grid generation):
+	GPrm: Our Object Size (X): How large our object is using the world space X axis (a default cube is 1)
+	GPrm: Our Object Size (Z): How large our object is using the world space Z axis (a default cube is 1)	
+	GPrm: Object Y Axis Position: What elevation on the Y axis we want to move our objects.
+	GPrm: Grid Width (In prefab #): How wide you want the grid to be on generation measured in your prefabs.
+
+Set Prefab Properties up: 
+	After adding your prefab, when you press this button it will count how many nested gameobjects are within 
+	the prefab and create a collection of objects for them, ready for later.
+
+Generate Generic Objects:
+	This will take your prefab and generate the number of objects that you have to told it too in the scene
+
+Process Existing Objects: 
+	Only if you already have the objects in the scene and don't need to generate any more, you can press this 
+	button and as long as the objects are a child of the "SS - Object Generator" gameobject, it will detect and
+	include them for the subsequent processing.
+
+Default Object Name (required):
+	Can be treated as your default object or as just another special type object but the name has to match
+	the name of the associated object nested within the prefab.
+
+Special Object 1-3 (required): 
+	Treated identically to the default object and has to match the associated nested objected.
+
+Probability sliders (required):
+	This is where you can set the probability that you want a certain game object to appear. The sum of the
+	probability should never exceed 100 in total, however you don't have to include all of the types if you 
+	don't need them and similarly the sum of probabilities can be less then 100.
+
+
+Set Objects: Randomize Object Types
+	This now randomizes the types of objects in the scene based on the probabilites you've set. This
+	also renames the game object to its associated type on each randomisaton to further save time.
+
+Set Objects: Default Object Types
+	This will set all generated objects to your set default state. This may be of use if you want to reset all
+	objects to a plain tile you've set for example.
+
+Transform Objects: To Grid (requires grid parameters)
+	This will take all generated objects and use the grid parameters you have entered above to create 
+	a flat grid in the world space for general use. Can be very useful for visualising the randomize object
+	types function.
+
+Clear filters:
+	This will clear all parameters you have entered and completely reset the game object. You can
+	either delete the game objects within the scene to start from scratch or keep them and use the
+	"Process Existing Objects" button to add them back to the script (you wills till need to set 
+	the prefab properties up again via the button).  
+
+Example Scene Steps (reference above for field details):
+
+1. Open up "ExampleScene_1_Before".
+	The "SS - Object Generator" prefab has already been placed in the scene.
+
+2. Click on the SS Object Generator game object in the heirachy.
+
+3. Drag the Tile prefab (has 4 nested gameobjects within it) from our assets to the 'Object to Generate' field 
+
+4. Type 100 in the '# Prefabs To Generate Field'
+
+5. Our tile game objects within the tile are all 1-1-1 3D cubes so for the Grid Parameter fields:
+	GPrm: Our Object Size (X) = 1
+	GPrm: Our Object Size (Z) = 1
+	GPrm: Object Y Axis Positon: = 0.5 (The center of the cube is 0.5 above our 'ground level' whilst our 
+	      			            cube height is 1)
+	GPrm: Grid Width (In prefab #) = 10 (We want our grid to be 10 prefabs wide. With 100 generated prefabs 
+	      				     that will create a 10x10 square grid)
+
+6. Click 'Set Prefab Properties Up)
+
+7. Click 'Generate Generic Objects' 
+	(100 prefabs should now of been generated in your scene under our generator game object)
+
+8. Click the 'Proceed: Step 2' checkbox
+
+9: Type in the names of the nested game objects you are using within the Tile Prefab (exact match)
+	(These are 'TileDefault', 'TileGrass', 'TileSand', 'TileWater')
+
+10: Set the probabilities of the associated objects on the sliders or the fields next to them. For this example 
+    lets set each one to '25'
+
+11: Click "Set Objects: Randomize Object Types" 
+	You should see in the heriachy that all the game objects have been randomised visibly (you can press this as
+        many times as you want)
+
+12: Click "Transform Objects: To Grid"
+	You should see in the scene view that all our game objects have moved into the grid layout that we specified 
+	in the inspector earlier (10x10 grid) and you can visibly see all the different object types that had a chance to show.
+
+
+Congratulations, that's it, thats all the core functionality of the tool. It can be easily extended to not just generate to a 
+grid but you can use those objects in any way you desire. I've used them for collectibles, Power ups/Pick-ups, Walls, Game Tiles, 
+Trees. Any object that is the same but has multiple variations works fantastically with this asset. Just remember the only requirement 
+is that there must be a parent gameobject (like our tile) with nested game objects within it (the different types of tile we want).
+
+---------------------------------------------------------------------------------------------------------------------------------
+Thank You						
+---------------------------------------------------------------------------------------------------------------------------------
+
+Thank you again for using this asset, i've tried to keep it as simple as possible as it should be used as a tool to get started
+and enhance creativity rather then a fully fledged soloution out the box. For any features you may want to be added that, or any advice
+on how to to add them yourself please get in contact with me at through the unity asset store. The sample applies for any questions you
+may have on using the asset. Please remember to rate my asset so I know where to improve too, I would really appreciate that!
