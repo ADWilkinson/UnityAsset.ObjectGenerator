@@ -148,5 +148,5 @@ Thank You
 
 Thank you again for using this asset, i've tried to keep it as simple as possible as it should be used as a tool to get started
 and enhance creativity rather then a fully fledged soloution out the box. For any features you may want to be added that, or any advice
-on how to to add them yourself please get in contact with me at through the unity asset store. The sample applies for any questions you
+on how to to add them yourself please get in contact with me at through the unity asset store. The same applies for any questions you
 may have on using the asset. Please remember to rate my asset so I know where to improve too, I would really appreciate that!
