@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/SimpleStart - OG/Scenes/ExampleScene_2_After.unity
+- path: Assets/SimpleStart - Object Generator/Scenes/ExampleScene_1_Before.unity
   isLoaded: 1
   isActive: 1
